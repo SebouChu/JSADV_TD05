@@ -9,7 +9,12 @@ function reverseStr(input) {
     return reverse;
 }
 
+function reverseStr2(input) {
+    return input.split("").reverse().join("");
+}
+
 console.log(`"Hello DAWIN" à l'envers, ça fait "${reverseStr('Hello DAWIN')}".`);
+console.log(`"Hello DAWIN 2" à l'envers, ça fait "${reverseStr2('Hello DAWIN 2')}".`);
 
 // Q4.2
 
