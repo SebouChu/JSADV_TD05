@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>TD2 | VueJS</title>
+    <style>
+      ul p { margin: 0; }
+      ul li { margin: 15px; }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-bind:title="messageTitle">{{ message }}</h1>
+      <div class="lorem-container">
+        <label for="toggleLorem">Tu veux du Lorem ?</label>
+        <input type="checkbox" v-model="toggleLorem">
+        <p v-if="toggleLorem">Eh bah non !</p>
+      </div>
+
+      <div class="movies">
+        <div class="add-movie">
+          <p><strong>New Movie</strong></p>
+          <p style="color:gray; font-size: 13px;">Première lettre : <span v-if="newMovie.title !== undefined && newMovie.title.trim() != ''">{{ newMovie.title[0] }}</span></p>
+
+          <label for="newMovie.title">Title : </label>
+          <input type="text" v-model="newMovie.title" placeholder="Interstellar" size="50">
+          <br>
+          <label for="newMovie.year">Year : </label>
+          <input type="number" style="width:5em;" v-model="newMovie.year" placeholder="2014">
+          <br>
+          <label for="newMovie.director">Director : </label>
+          <input type="text" v-model="newMovie.director" placeholder="Christopher Nolan">
+          <br>
+          <label for="newMovie.synopsis">Synopsis : </label><br>
+          <textarea v-model="newMovie.synopsis" rows="8" cols="80" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></textarea>
+          <br>
+          <button type="button" v-on:click="addMovie">Add</button>
+        </div>
+        <p>Nombre de films : {{ movies.length }} <button type="button" v-on:click="popMovies">Pop</button></p>
+        <ul>
+          <li v-for="movie in movies">
+            <p v-on:click="movie.toggle = !movie.toggle"><strong>{{ movie.title }} ({{ movie.year }})</strong></p>
+            <div class="movie-details" v-show="movie.toggle">
+              <p><i>Réalisé par {{ movie.director }}</i><br>{{ movie.synopsis }}</p>
+              <p>
+                <button type="button" v-on:click="editMovie(movie.id)">Edit</button>
+                <button type="button" v-on:click="destroyMovie(movie.id)" style="color:red;">Destroy</button>
+              </p>
+            </div>
+          </li>
+        </ul>
+        <div class="edit-movie" v-if="editingMovie !== null">
+          <p><strong>Edit Movie</strong></p>
+          <label for="editingMovie.title">Title : </label>
+          <input type="text" v-model="editingMovie.title" placeholder="Interstellar" size="50">
+          <br>
+          <label for="editingMovie.year">Year : </label>
+          <input type="number" style="width:5em;" v-model="editingMovie.year" placeholder="2014">
+          <br>
+          <label for="editingMovie.director">Director : </label>
+          <input type="text" v-model="editingMovie.director" placeholder="Christopher Nolan">
+          <br>
+          <label for="editingMovie.synopsis">Synopsis : </label><br>
+          <textarea v-model="editingMovie.synopsis" rows="8" cols="80" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></textarea>
+          <br>
+          <button type="button" v-on:click="endEditMovie">End</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
