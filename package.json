@@ -1,0 +1,10 @@
+{
+  "name": "td4-jsadv-dawin",
+  "description": "TD4 | JS Avancé DAWIN",
+  "version": "1.0.0",
+  "author": "Sébastien Gaya <sebastien.gaya@gmail.com>",
+  "dependencies": {
+    "vue": "2.5.17",
+    "vue-router": "3.0.1"
+  }
+}
