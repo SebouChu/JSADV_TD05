@@ -9,15 +9,22 @@
   <body>
     <div id="app">
       <router-view></router-view>
+      <router-view name="a"></router-view>
+      <router-view name="b"></router-view>
     </div>
 
     <script type="text/javascript">
       const Foo = { template: '<div>foo</div>' }
       const Bar = { template: '<div>bar</div>' }
+      const DisplayVar = { template: '<div>Variable de la route : {{ $route.params.var }}</div>' }
+      const DisplayTwoVars = { template: '<div>Variables de la route : {{ $route.params.var1 }} && {{ $route.params.var2 }}</div>' }
 
       const routes = [
         { path: '/foo', component: Foo },
-        { path: '/bar', component: Bar }
+        { path: '/bar', component: Bar },
+        { path: '/multiple/:var', components: { default: Foo, a: Bar, b: DisplayVar } },
+        { path: '/:var', component: DisplayVar },
+        { path: '/:var1/:var2', component: DisplayTwoVars }
       ]
 
       const router = new VueRouter({
