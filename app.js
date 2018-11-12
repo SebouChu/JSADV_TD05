@@ -18,7 +18,7 @@ Vue.component("movieItem", {
 });
 
 Vue.component("movieForm", {
-    props: ["movie"],
+    props: ["movie", "button"],
     template: `<form>
             <label for="movie.title">Title : </label>
             <input type="text" v-model="movie.title" placeholder="Interstellar" size="50"><br>
@@ -32,7 +32,7 @@ Vue.component("movieForm", {
             <label for="movie.synopsis">Synopsis : </label><br>
             <textarea v-model="movie.synopsis" rows="8" cols="80" placeholder="Lorem ipsum dolor sit amet..."></textarea><br>
 
-            <button type="button" v-on:click="$emit('submit')">End</button>
+            <button type="button" v-on:click="$emit('submit')">{{ button }}</button>
         </form>`
 });
 

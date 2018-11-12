@@ -23,7 +23,7 @@
           <p><strong>New Movie</strong></p>
           <p style="color:gray; font-size: 13px;">Première lettre : <span v-if="newMovie.title !== undefined && newMovie.title.trim() != ''">{{ newMovie.title[0] }}</span></p>
 
-          <movie-form v-bind:movie="newMovie" v-on:submit="addMovie"></movie-form>
+          <movie-form v-bind:movie="newMovie" v-bind:button="'Add'" v-on:submit="addMovie"></movie-form>
         </div>
 
         <div class="search-form">
@@ -54,7 +54,7 @@
         <div class="edit-movie" v-if="editingMovie !== null">
           <p><strong>Edit Movie</strong></p>
 
-          <movie-form v-bind:movie="editingMovie" v-if="editingMovie !== null" v-on:submit="endEditMovie"></movie-form>
+          <movie-form v-bind:movie="editingMovie" v-bind:button="'End'" v-if="editingMovie !== null" v-on:submit="endEditMovie"></movie-form>
         </div>
       </div>
     </div>
