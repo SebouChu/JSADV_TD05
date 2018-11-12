@@ -32,6 +32,7 @@ var app = new Vue({
         ],
         lastId: 5,
         newMovie: {},
+        search: { attribute: "title", value: "" },
         editingMovie: null
     },
     methods: {
@@ -64,6 +65,23 @@ var app = new Vue({
             let index = this.movies.findIndex(item => item.id == id);
             if (index !== -1) {
                 this.movies.splice(index, 1);
+            }
+        },
+    },
+    computed: {
+        filteredMovies: function() {
+            if (this.search.value.trim() == "") {
+                return this.movies;
+            }
+            switch (this.search.attribute) {
+                case "title":
+                    return this.movies.filter(item => item.title.toLowerCase().indexOf(this.search.value.toLowerCase()) !== -1);
+                case "director":
+                    return this.movies.filter(item => item.director.toLowerCase().indexOf(this.search.value.toLowerCase()) !== -1);
+                case "year":
+                    return this.movies.filter(item => item.year == parseInt(this.search.value));
+                default:
+                    return [];
             }
         }
     }

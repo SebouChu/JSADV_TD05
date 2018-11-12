@@ -36,9 +36,19 @@
           <br>
           <button type="button" v-on:click="addMovie">Add</button>
         </div>
-        <p>Nombre de films : {{ movies.length }} <button type="button" v-on:click="popMovies">Pop</button></p>
+        <div class="search-form">
+          <p>
+            <strong>Search by</strong>
+            <select v-model="search.attribute">
+              <option value="title">Title</option>
+              <option value="year">Year</option>
+              <option value="director">Director</option>
+            </select> :
+            <input type="text" v-model="search.value" placeholder="Search...">
+          </p>
+        </div>
         <ul>
-          <li v-for="movie in movies">
+          <li v-for="movie in filteredMovies">
             <p v-on:click="movie.toggle = !movie.toggle"><strong>{{ movie.title }} ({{ movie.year }})</strong></p>
             <div class="movie-details" v-show="movie.toggle">
               <p><i>Réalisé par {{ movie.director }}</i><br>{{ movie.synopsis }}</p>
@@ -49,6 +59,7 @@
             </div>
           </li>
         </ul>
+        <p>Nombre de films enregistrés : {{ movies.length }} <button type="button" v-on:click="popMovies">Pop</button></p>
         <div class="edit-movie" v-if="editingMovie !== null">
           <p><strong>Edit Movie</strong></p>
           <label for="editingMovie.title">Title : </label>
