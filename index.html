@@ -41,7 +41,7 @@
         <ul>
           <li
             is="movie-item"
-            v-for="movie in movies"
+            v-for="movie in filteredMovies"
             v-bind:movie="movie"
             v-bind:key="movie.id"
             v-on:edit="editMovie(movie.id)"
