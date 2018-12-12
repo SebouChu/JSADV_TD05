@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>My Routed Movies</h1>
+  <h1>{{ this.$route.meta.title }}</h1>
 
   <router-view></router-view>
 </div>

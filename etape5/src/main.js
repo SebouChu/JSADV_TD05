@@ -16,15 +16,21 @@ Vue.component('movie-item', MovieItemComponent);
 Vue.component('movie-form', MovieFormComponent);
 
 const routes = [
-    { path: '/', component: Home, name: 'home' },
-    { path: '/movies', component: ListMovies, name: 'movies' },
-    { path: '/movies/new', component: AddMovie, name: 'new_movie' },
-    { path: '/movies/:id/edit', component: EditMovie, name: 'edit_movie' }
+    { path: '/', component: Home, name: 'home', meta: { title: 'Home' } },
+    { path: '/movies', component: ListMovies, name: 'movies', meta: { title: 'Movies' } },
+    { path: '/movies/new', component: AddMovie, name: 'new_movie', meta: { title: 'Add Movie' } },
+    { path: '/movies/:id/edit', component: EditMovie, name: 'edit_movie', meta: { title: 'Edit Movie' } }
 ]
 
 const router = new VueRouter({
     routes
 });
+
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | TD5 JSADV`
+  next()
+})
+
 
 new Vue({
   el: '#app',

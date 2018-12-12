@@ -1,6 +1,5 @@
 <template>
   <div class="add-movie">
-    <p><strong>New Movie</strong></p>
     <p style="color:gray; font-size: 13px;">Première lettre : <span v-if="newMovie.title !== undefined && newMovie.title.trim() != ''">{{ newMovie.title[0] }}</span></p>
 
     <movie-form v-bind:movie="newMovie" v-bind:button="'Create'" v-on:submit="addMovie"></movie-form>

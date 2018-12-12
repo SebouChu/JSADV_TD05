@@ -1,7 +1,5 @@
 <template>
   <div class="edit-movie">
-    <p><strong>Edit Movie</strong></p>
-
     <movie-form v-bind:movie="editingMovie" v-bind:button="'Update'" v-if="editingMovie != null" v-on:submit="endEdit()"></movie-form>
 
     <div v-if="editingMovie == null">
