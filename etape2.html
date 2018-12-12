@@ -13,20 +13,33 @@
     </div>
 
     <script type="text/javascript">
+      const myStore = new Vuex.Store({
+        state: {
+          message: 'Hello'
+        }
+      })
+
       Vue.component('comp', {
         template: '<div>{{ localdata }} {{ message }}</div>',
+        store: myStore,
+        computed: {
+          message() {
+            return this.$store.state.message;
+          }
+        },
         data() {
           return {
-            localdata: "Local"
+            localdata: 'Local'
           }
         }
       })
 
       const app = new Vue({
         el: '#app',
-        data() {
-          return {
-            message: "Hello"
+        store: myStore,
+        computed: {
+          message() {
+            return this.$store.state.message;
           }
         }
       })
