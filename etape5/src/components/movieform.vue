@@ -13,11 +13,17 @@
   <textarea v-model="movie.synopsis" rows="8" cols="80" placeholder="Lorem ipsum dolor sit amet..."></textarea><br>
 
   <button type="button" v-on:click="$emit('submit')">{{ button }}</button>
+  <button type="button" v-on:click="backToList()">Back</button>
 </form>
 </template>
 
 <script>
 export default {
-  props: ["movie", "button"]
+  props: ["movie", "button"],
+  methods: {
+    backToList: function () {
+      this.$router.push({ name: 'movies' });
+    }
+  }
 }
 </script>
