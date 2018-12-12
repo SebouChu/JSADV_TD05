@@ -16,6 +16,11 @@
       const myStore = new Vuex.Store({
         state: {
           message: 'Hello'
+        },
+        mutations: {
+          updateMessage(state, param1) {
+            state.message = param1;
+          }
         }
       })
 
@@ -41,6 +46,11 @@
           message() {
             return this.$store.state.message;
           }
+        },
+        mounted: function () {
+          setTimeout(function () {
+            app.$store.commit('updateMessage', "Nouveau Message")
+          }, 3000)
         }
       })
     </script>
