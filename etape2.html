@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>TD5 VueJS</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vuex/dist/vuex.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <comp></comp>
+    </div>
+
+    <script type="text/javascript">
+      Vue.component('comp', {
+        template: '<div>{{ localdata }} {{ message }}</div>',
+        data() {
+          return {
+            localdata: "Local"
+          }
+        }
+      })
+
+      const app = new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>
