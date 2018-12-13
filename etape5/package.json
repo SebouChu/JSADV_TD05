@@ -1,8 +1,11 @@
 {
   "name": "td3-jsadv-dawin",
   "description": "TD3 | JS Avancé DAWIN",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Sébastien Gaya <sebastien.gaya@gmail.com>",
+  "scripts": {
+    "start": "webpack-dev-server --progress --open --hot --port 8080"
+  },
   "dependencies": {
     "@babel/core": "^7.2.0",
     "babel-core": "^6.26.3",
