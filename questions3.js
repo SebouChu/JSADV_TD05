@@ -44,7 +44,14 @@ function pow2(b, n) {
     return result;
 }
 
-console.log(`2 puissance 8 vaut ${pow(2, 8)} ou encore ${pow2(2, 8)}`);
+function pow3(b, n, acc = 1) {
+    if (n == 0) {
+        return acc;
+    }
+    return pow3(b, n-1, acc*b);
+}
+
+console.log(`2 puissance 8 vaut ${pow(2, 8)} ou encore ${pow2(2, 8)} ou encore ${pow3(2, 8)}`);
 
 // Q3.5
 
