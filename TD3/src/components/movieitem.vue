@@ -14,7 +14,7 @@
 <script>
 export default {
   props: ["movie"],
-  data: function() {
+  data: function () {
     return {
       toggleDetails: false
     }

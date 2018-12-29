@@ -83,11 +83,11 @@ export default {
     }
   },
   methods: {
-    popMovies: function() {
+    popMovies: function () {
       this.movies.pop();
     },
 
-    addMovie: function() {
+    addMovie: function () {
       this.newMovie.id = this.lastId;
       this.newMovie.year = parseInt(this.newMovie.year);
       this.movies.push(this.newMovie);
@@ -100,7 +100,7 @@ export default {
       this.editingMovie = this.movies.find(item => item.id == id);
     },
 
-    endEditMovie: function() {
+    endEditMovie: function () {
       this.editingMovie = null;
     },
 
@@ -116,7 +116,7 @@ export default {
     },
   },
   computed: {
-    filteredMovies: function() {
+    filteredMovies: function () {
       if (this.search.value.trim() == "") {
         return this.movies;
       }
