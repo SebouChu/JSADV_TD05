@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>TD5 VueJS</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vuex/dist/vuex.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+      <comp></comp>
+    </div>
+
+    <script type="text/javascript">
+      const myStore = new Vuex.Store({
+        state: {
+          message: 'Hello'
+        },
+        mutations: {
+          updateMessage(state, param1) {
+            state.message = param1;
+          }
+        }
+      })
+
+      Vue.component('comp', {
+        template: '<div>{{ localdata }} {{ message }}</div>',
+        store: myStore,
+        computed: {
+          message() {
+            return this.$store.state.message;
+          }
+        },
+        data() {
+          return {
+            localdata: 'Local'
+          }
+        }
+      })
+
+      const app = new Vue({
+        el: '#app',
+        store: myStore,
+        computed: {
+          message() {
+            return this.$store.state.message;
+          }
+        },
+        mounted: function () {
+          setTimeout(function () {
+            app.$store.commit('updateMessage', "Nouveau Message")
+          }, 3000)
+        }
+      })
+    </script>
+  </body>
+</html>
